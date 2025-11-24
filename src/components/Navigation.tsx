@@ -37,11 +37,11 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 animate-fade-in">
-            {["Services", "Work", "About", "Contact"].map((item) => (
+          <div className="hidden md:flex items-center space-x-10 animate-fade-in">
+            {["Home", "About", "Services", "Portfolio", "Works", "Blogs", "Contact"].map((item) => (
               <button
                 key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+                onClick={() => scrollToSection(item === "Home" ? "hero" : item.toLowerCase())}
                 className="text-foreground/80 hover:text-gold transition-smooth font-inter text-sm tracking-wide relative group"
               >
                 {item}
@@ -72,10 +72,10 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden py-6 space-y-4 animate-fade-in">
-            {["Services", "Work", "About", "Contact"].map((item) => (
+            {["Home", "About", "Services", "Portfolio", "Works", "Blogs", "Contact"].map((item) => (
               <button
                 key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+                onClick={() => scrollToSection(item === "Home" ? "hero" : item.toLowerCase())}
                 className="block w-full text-left text-foreground/80 hover:text-gold transition-smooth font-inter py-2"
               >
                 {item}
