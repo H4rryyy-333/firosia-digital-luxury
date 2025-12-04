@@ -125,4 +125,9 @@ All colors MUST be HSL.
   .transition-spring {
     transition: var(--transition-spring);
   }
+
+  /* Global justified text */
+  .text-justify {
+    text-align: justify;
+  }
 }
