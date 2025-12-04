@@ -10,15 +10,16 @@ const AboutPage = () => {
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <span className="text-gold font-inter text-sm tracking-[0.2em] uppercase">
-              About Firosia
+              About Firosia Brandings
             </span>
             <div className="w-12 h-0.5 bg-gold mx-auto mt-2 mb-8" />
             <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
-              Elevating Brands Through <span className="text-gold">Strategic Creativity</span>
+              Elevating Brands Through <span className="text-gold">AI-Driven Strategic Creativity</span>
             </h1>
-            <p className="text-foreground/80 font-inter text-lg lg:text-xl leading-relaxed">
+            <p className="text-foreground/80 font-inter text-lg lg:text-xl leading-relaxed text-justify max-w-3xl mx-auto">
               At Firosia Brandings, we craft brand experiences built on strategy, precision, and elegant creativity. 
-              Our mission is to elevate ambitious brands with thoughtful, timeless, and impactful digital identity systems.
+              Our mission is to elevate ambitious brands with thoughtful, timeless, and impactful digital identity systems 
+              powered by cutting-edge AI technology.
             </p>
           </div>
         </div>
@@ -32,14 +33,14 @@ const AboutPage = () => {
               <h2 className="font-playfair text-4xl lg:text-5xl font-bold">
                 Our Philosophy
               </h2>
-              <p className="text-foreground/70 font-inter text-lg leading-relaxed">
-                We believe that exceptional branding is born from the intersection of strategic insight and creative excellence. 
+              <p className="text-foreground/70 font-inter text-lg leading-relaxed text-justify">
+                At Firosia Brandings, we believe that exceptional branding is born from the intersection of strategic insight and creative excellence. 
                 Every project we undertake is guided by deep understanding, meticulous attention to detail, and an unwavering 
                 commitment to elevating our clients' vision.
               </p>
-              <p className="text-foreground/70 font-inter text-lg leading-relaxed">
-                Our approach combines timeless design principles with contemporary trends, creating brand identities that 
-                resonate with modern audiences while maintaining sophistication and longevity.
+              <p className="text-foreground/70 font-inter text-lg leading-relaxed text-justify">
+                Firosia Brandings combines timeless design principles with contemporary trends and AI-driven insights, 
+                creating brand identities that resonate with modern audiences while maintaining sophistication and longevity.
               </p>
             </div>
             <div className="relative h-[500px] rounded-xl overflow-hidden animate-fade-in">
@@ -72,7 +73,7 @@ const AboutPage = () => {
               {
                 icon: Target,
                 title: "Strategic Precision",
-                description: "Every decision backed by research, insight, and strategic thinking."
+                description: "Every decision backed by research, insight, and AI-powered strategic thinking."
               },
               {
                 icon: Sparkles,
@@ -87,7 +88,7 @@ const AboutPage = () => {
               {
                 icon: Award,
                 title: "Premium Quality",
-                description: "Uncompromising standards in every deliverable we produce."
+                description: "Uncompromising standards in every deliverable Firosia Brandings produces."
               }
             ].map((value, index) => (
               <Card 
@@ -99,7 +100,7 @@ const AboutPage = () => {
                   <value.icon className="text-gold" size={28} />
                 </div>
                 <h3 className="font-playfair text-2xl font-semibold mb-3">{value.title}</h3>
-                <p className="text-foreground/70 font-inter leading-relaxed">{value.description}</p>
+                <p className="text-foreground/70 font-inter leading-relaxed text-justify">{value.description}</p>
               </Card>
             ))}
           </div>

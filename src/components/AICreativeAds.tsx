@@ -1,40 +1,40 @@
-import { Sparkles, Video, Users, Megaphone, TrendingUp } from "lucide-react";
+import { Sparkles, Video, Users, Megaphone, TrendingUp, Bot } from "lucide-react";
 import { Card } from "./ui/card";
 
 const creativeFeatures = [
   {
     icon: TrendingUp,
-    title: "Trend-Driven Ad Campaigns",
-    description: "High-impact campaigns designed for modern audiences with Gen-Z aesthetic and viral potential.",
+    title: "Trend-Driven AI Ad Campaigns",
+    description: "High-impact campaigns powered by AI insights, designed for modern audiences with viral potential and data-driven optimization.",
     image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1000"
   },
   {
     icon: Users,
-    title: "Influencer + UGC Marketing",
-    description: "Authentic collaborations blending influencer reach with user-generated content for maximum engagement.",
+    title: "Influencer + UGC + AI Engagement",
+    description: "Authentic collaborations enhanced by AI-powered engagement analysis, blending influencer reach with user-generated content.",
     image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1000"
   },
   {
     icon: Sparkles,
-    title: "Aesthetic Product Ads",
-    description: "Premium product visuals with modern, Gen-Z inspired aesthetics and clean minimal compositions.",
+    title: "AI Aesthetic Product Ads",
+    description: "Premium product visuals crafted with AI-enhanced aesthetics and clean minimal compositions designed for maximum appeal.",
     image: "https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?q=80&w=1000"
   },
   {
     icon: Video,
-    title: "Short-Form Video Content",
-    description: "Engaging reels, TikToks, and stories optimized for social platforms and maximum shareability.",
+    title: "Short-Form Video + AI Edits",
+    description: "Engaging reels and stories optimized with AI editing tools for social platforms and maximum shareability.",
     image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1000"
   },
   {
     icon: Megaphone,
-    title: "PR + Viral Moment Engineering",
-    description: "Strategic PR campaigns designed to create buzz, build momentum, and capture attention.",
+    title: "AI-Powered PR + Viral Engineering",
+    description: "Strategic PR campaigns designed with AI analytics to create buzz, predict trends, and capture attention at scale.",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1000"
   }
 ];
 
-const GenZCreativeAds = () => {
+const AICreativeAds = () => {
   return (
     <section className="py-24 lg:py-32 px-6 lg:px-12 bg-secondary/20 relative overflow-hidden">
       {/* Background gradient */}
@@ -43,16 +43,19 @@ const GenZCreativeAds = () => {
       <div className="container mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-20 animate-fade-in">
-          <span className="text-gold font-inter text-sm tracking-[0.2em] uppercase">
-            Modern Advertising
-          </span>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Bot className="text-gold" size={24} />
+            <span className="text-gold font-inter text-sm tracking-[0.2em] uppercase">
+              AI-Powered Advertising
+            </span>
+          </div>
           <div className="w-12 h-0.5 bg-gold mx-auto mt-2 mb-8" />
           <h2 className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-            Gen-Z Creative <span className="text-gold">Advertising Suite</span>
+            AI-Driven Creative <span className="text-gold">Advertising Suite</span>
           </h2>
-          <p className="text-foreground/70 text-lg font-inter mt-4 max-w-3xl mx-auto leading-relaxed">
-            Cutting-edge advertising solutions that blend authenticity, modern aesthetics, and strategic virality 
-            to captivate today's audiences while maintaining premium brand positioning.
+          <p className="text-foreground/70 text-lg font-inter mt-4 max-w-3xl mx-auto leading-relaxed text-justify">
+            Cutting-edge advertising solutions powered by artificial intelligence, blending authenticity, modern aesthetics, 
+            and strategic virality to captivate today's audiences while maintaining premium brand positioning.
           </p>
         </div>
 
@@ -82,11 +85,11 @@ const GenZCreativeAds = () => {
                   <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center">
                     <feature.icon className="text-gold" size={20} />
                   </div>
-                  <h3 className="font-playfair text-2xl font-semibold group-hover:text-gold transition-smooth">
+                  <h3 className="font-playfair text-xl font-semibold group-hover:text-gold transition-smooth">
                     {feature.title}
                   </h3>
                 </div>
-                <p className="text-foreground/70 font-inter leading-relaxed">
+                <p className="text-foreground/70 font-inter leading-relaxed text-justify">
                   {feature.description}
                 </p>
               </div>
@@ -120,11 +123,11 @@ const GenZCreativeAds = () => {
                   <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center">
                     <feature.icon className="text-gold" size={20} />
                   </div>
-                  <h3 className="font-playfair text-2xl font-semibold group-hover:text-gold transition-smooth">
+                  <h3 className="font-playfair text-xl font-semibold group-hover:text-gold transition-smooth">
                     {feature.title}
                   </h3>
                 </div>
-                <p className="text-foreground/70 font-inter leading-relaxed">
+                <p className="text-foreground/70 font-inter leading-relaxed text-justify">
                   {feature.description}
                 </p>
               </div>
@@ -136,7 +139,7 @@ const GenZCreativeAds = () => {
         <div className="text-center mt-16 animate-fade-in">
           <div className="inline-flex items-center gap-2 text-gold font-inter text-sm tracking-wider">
             <span className="w-8 h-px bg-gold" />
-            AUTHENTIC. VIRAL. PREMIUM.
+            AI-POWERED. AUTHENTIC. PREMIUM.
             <span className="w-8 h-px bg-gold" />
           </div>
         </div>
@@ -145,4 +148,4 @@ const GenZCreativeAds = () => {
   );
 };
 
-export default GenZCreativeAds;
+export default AICreativeAds;

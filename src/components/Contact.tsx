@@ -10,6 +10,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company: "",
     message: "",
   });
 
@@ -19,7 +20,7 @@ const Contact = () => {
       title: "Message Sent!",
       description: "We'll get back to you within 24 hours.",
     });
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", company: "", message: "" });
   };
 
   return (
@@ -38,7 +39,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
           <div className="space-y-8 animate-fade-in-left">
-            <p className="text-foreground/70 text-lg font-inter leading-relaxed">
+            <p className="text-foreground/70 text-lg font-inter leading-relaxed text-justify">
               Ready to transform your brand? Let's start a conversation about
               your vision and how we can bring it to life.
             </p>
@@ -50,7 +51,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-inter font-semibold mb-1">Email</div>
-                  <div className="text-foreground/70">hello@firosia.com</div>
+                  <div className="text-foreground/70">firosiabrandings@gmail.com</div>
                 </div>
               </div>
 
@@ -60,7 +61,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-inter font-semibold mb-1">Phone</div>
-                  <div className="text-foreground/70">+1 (555) 123-4567</div>
+                  <div className="text-foreground/70">+91 9884264816</div>
                 </div>
               </div>
 
@@ -71,9 +72,9 @@ const Contact = () => {
                 <div>
                   <div className="font-inter font-semibold mb-1">Address</div>
                   <div className="text-foreground/70">
-                    123 Branding Street
+                    No. 176, Y Block, 1st Street
                     <br />
-                    New York, NY 10001
+                    Anna Nagar, Chennai – 600040
                   </div>
                 </div>
               </div>
@@ -92,6 +93,20 @@ const Contact = () => {
                 </div>
               </div>
             </div>
+
+            {/* Google Maps Embed */}
+            <div className="mt-8 rounded-xl overflow-hidden border border-border/50">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.0088078044766!2d80.20887!3d13.0878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6e262c91!2sY%20Block%2C%20Anna%20Nagar%2C%20Chennai%2C%20Tamil%20Nadu%20600040!5e0!3m2!1sen!2sin!4v1699000000000!5m2!1sen!2sin"
+                width="100%"
+                height="250"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
           </div>
 
           {/* Contact Form */}
@@ -105,7 +120,7 @@ const Contact = () => {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   required
-                  className="bg-background/50 border-border/50 focus:border-gold transition-smooth font-inter h-12"
+                  className="bg-background/50 border-gold/30 focus:border-gold transition-smooth font-inter h-12"
                 />
               </div>
 
@@ -118,7 +133,18 @@ const Contact = () => {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
-                  className="bg-background/50 border-border/50 focus:border-gold transition-smooth font-inter h-12"
+                  className="bg-background/50 border-gold/30 focus:border-gold transition-smooth font-inter h-12"
+                />
+              </div>
+
+              <div>
+                <Input
+                  placeholder="Company Name"
+                  value={formData.company}
+                  onChange={(e) =>
+                    setFormData({ ...formData, company: e.target.value })
+                  }
+                  className="bg-background/50 border-gold/30 focus:border-gold transition-smooth font-inter h-12"
                 />
               </div>
 
@@ -130,7 +156,7 @@ const Contact = () => {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   required
-                  className="bg-background/50 border-border/50 focus:border-gold transition-smooth font-inter min-h-[160px] resize-none"
+                  className="bg-background/50 border-gold/30 focus:border-gold transition-smooth font-inter min-h-[160px] resize-none"
                 />
               </div>
 
