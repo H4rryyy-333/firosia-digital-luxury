@@ -1,44 +1,36 @@
 import { Card } from "./ui/card";
 import { ExternalLink } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const portfolioItems = [
-  {
-    title: "Luxury Fashion Rebrand",
-    category: "Brand Identity",
-    description: "Complete visual identity redesign for a premium fashion house",
-  },
-  {
-    title: "Tech Startup Launch",
-    category: "Digital Marketing",
-    description: "Strategic launch campaign resulting in 300% user growth",
-  },
-  {
-    title: "E-commerce Platform",
-    category: "Website Design",
-    description: "High-conversion luxury e-commerce experience",
-  },
-  {
-    title: "Financial Services Brand",
-    category: "Brand Strategy",
-    description: "Comprehensive brand positioning and visual identity",
-  },
-  {
-    title: "Restaurant Chain",
-    category: "Social Media",
-    description: "Premium social media presence across 15 locations",
-  },
-  {
-    title: "Real Estate Platform",
-    category: "Web Development",
-    description: "Sophisticated property showcase with advanced filtering",
-  },
+  // ... keep existing code
 ];
 
 const Portfolio = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = sectionRef.current?.querySelectorAll(".scroll-animate, .portfolio-card");
+    elements?.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="work" className="py-24 lg:py-32 px-6 lg:px-12">
+    <section ref={sectionRef} id="work" className="py-16 lg:py-24 px-6 lg:px-12">
       <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-12 scroll-animate">
           <span className="text-gold font-inter text-sm tracking-[0.2em] uppercase">
             Portfolio
           </span>
@@ -51,15 +43,15 @@ const Portfolio = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {portfolioItems.map((item, index) => (
             <Card
               key={item.title}
-              className="bg-card border-border/50 overflow-hidden group cursor-pointer hover:border-gold/50 transition-all duration-500 hover:shadow-premium animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="portfolio-card scroll-animate bg-card border-border/50 overflow-hidden group cursor-pointer hover:border-gold/50 transition-all duration-500 hover:shadow-premium"
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
               {/* Image placeholder with gradient */}
-              <div className="relative h-64 bg-gradient-to-br from-gold/20 via-deep-grey to-charcoal overflow-hidden">
+              <div className="relative h-56 bg-gradient-to-br from-gold/20 via-deep-grey to-charcoal overflow-hidden">
                 <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-smooth" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-smooth">
                   <div className="w-12 h-12 rounded-full bg-gold/90 flex items-center justify-center">

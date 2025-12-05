@@ -2,17 +2,40 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 
-const Contact = () => {
+interface ContactProps {
+  showHero?: boolean;
+}
+
+const Contact = ({ showHero = false }: ContactProps) => {
   const { toast } = useToast();
+  const sectionRef = useRef<HTMLElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
     message: "",
   });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = sectionRef.current?.querySelectorAll(".scroll-animate, .scroll-animate-left, .scroll-animate-right");
+    elements?.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,9 +47,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-32 px-6 lg:px-12 bg-secondary/30">
+    <section ref={sectionRef} id="contact" className="py-16 lg:py-24 px-6 lg:px-12 bg-secondary/30">
       <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
+        {/* Single heading */}
+        <div className="text-center mb-12 scroll-animate">
           <span className="text-gold font-inter text-sm tracking-[0.2em] uppercase">
             Get In Touch
           </span>
@@ -34,11 +58,16 @@ const Contact = () => {
           <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold">
             Let's Elevate Your <span className="text-gold">Brand</span>
           </h2>
+          {showHero && (
+            <p className="text-foreground/80 font-inter text-lg lg:text-xl leading-relaxed mt-6 max-w-2xl mx-auto">
+              Ready to create something extraordinary? Let's start a conversation about your vision.
+            </p>
+          )}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
-          <div className="space-y-8 animate-fade-in-left">
+          <div className="space-y-8 scroll-animate-left">
             <p className="text-foreground/70 text-lg font-inter leading-relaxed text-justify">
               Ready to transform your brand? Let's start a conversation about
               your vision and how we can bring it to life.
@@ -110,7 +139,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="animate-fade-in-right">
+          <div className="scroll-animate-right">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Input

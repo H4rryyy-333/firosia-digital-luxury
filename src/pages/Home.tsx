@@ -2,7 +2,6 @@ import Hero from "@/components/Hero";
 import AICreativeAds from "@/components/AICreativeAds";
 import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
-import Contact from "@/components/Contact";
 
 const Home = () => {
   return (
@@ -11,7 +10,6 @@ const Home = () => {
       <AICreativeAds />
       <Services />
       <Portfolio />
-      <Contact />
     </div>
   );
 };
