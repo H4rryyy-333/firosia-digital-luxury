@@ -6,13 +6,13 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border/50 py-12 px-6 lg:px-12">
+    <footer className="bg-white py-12 px-6 lg:px-12 border-t border-gray-200">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-4">
             <img src={logo} alt="Firosia Brandings" className="h-10 w-auto" />
-            <p className="text-foreground/70 font-inter text-sm leading-relaxed text-justify">
+            <p className="text-gray-600 font-inter text-sm leading-relaxed text-justify">
               Crafting refined digital identities with precision, creativity, and
               strategic clarity.
             </p>
@@ -20,7 +20,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-playfair text-lg font-semibold">Quick Links</h3>
+            <h3 className="font-playfair text-lg font-semibold text-gray-900">Quick Links</h3>
             <ul className="space-y-2 font-inter text-sm">
               {[
                 { label: "Home", path: "/" },
@@ -34,7 +34,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <Link
                     to={link.path}
-                    className="text-foreground/70 hover:text-gold transition-smooth"
+                    className="text-gray-600 hover:text-gold transition-smooth"
                   >
                     {link.label}
                   </Link>
@@ -45,7 +45,7 @@ const Footer = () => {
 
           {/* Social */}
           <div className="space-y-4">
-            <h3 className="font-playfair text-lg font-semibold">Follow Us</h3>
+            <h3 className="font-playfair text-lg font-semibold text-gray-900">Follow Us</h3>
             <div className="flex gap-4">
               {[
                 { icon: Instagram, href: "#" },
@@ -55,10 +55,10 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 rounded-lg bg-secondary/50 hover:bg-gold/20 border border-border/50 hover:border-gold/50 flex items-center justify-center transition-smooth group"
+                  className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-gold/20 border border-gray-200 hover:border-gold/50 flex items-center justify-center transition-smooth group"
                 >
                   <social.icon
-                    className="text-foreground/70 group-hover:text-gold transition-smooth"
+                    className="text-gray-600 group-hover:text-gold transition-smooth"
                     size={18}
                   />
                 </a>
@@ -66,7 +66,7 @@ const Footer = () => {
             </div>
             
             {/* Contact Info */}
-            <div className="mt-6 space-y-2 text-sm text-foreground/70 font-inter">
+            <div className="mt-6 space-y-2 text-sm text-gray-600 font-inter">
               <p>+91 9884264816</p>
               <p>firosiabrandings@gmail.com</p>
               <p>Anna Nagar, Chennai – 600040</p>
@@ -75,8 +75,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-border/50 text-center">
-          <p className="text-foreground/60 font-inter text-sm">
+        <div className="pt-8 border-t border-gray-200 text-center">
+          <p className="text-gray-500 font-inter text-sm">
             © {currentYear} Firosia Brandings. All rights reserved.
           </p>
         </div>

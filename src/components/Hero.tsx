@@ -2,11 +2,35 @@ import { Button } from "./ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-workspace.jpg";
+import { useEffect, useRef } from "react";
 
 const Hero = () => {
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const statCards = statsRef.current?.querySelectorAll(".stat-card");
+    statCards?.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-6 lg:px-12 overflow-hidden">
-      <div className="container mx-auto">
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-6 lg:px-12 overflow-hidden relative">
+      {/* Parallax Background Effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-transparent parallax-slow" />
+      
+      <div className="container mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Text Content */}
           <div className="space-y-8 animate-fade-in-left">
@@ -68,29 +92,29 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Metrics Section - Large Two Column Layout */}
-        <div className="mt-20 lg:mt-32 grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 animate-fade-in">
-          <div className="text-center p-8 border border-border/30 rounded-2xl bg-card/30 backdrop-blur-sm">
-            <div className="font-playfair text-6xl md:text-7xl lg:text-8xl font-bold text-gold mb-2">
+        {/* Metrics Section - Balanced Layout */}
+        <div ref={statsRef} className="mt-16 lg:mt-24 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="stat-card scroll-animate text-center py-6 px-4 border border-border/30 rounded-xl bg-card/30 backdrop-blur-sm flex flex-col items-center justify-center min-h-[140px]">
+            <div className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold text-gold leading-none">
               150+
             </div>
-            <div className="text-foreground/60 font-inter text-lg tracking-wider uppercase">
+            <div className="text-foreground/60 font-inter text-sm md:text-base tracking-wider uppercase mt-3">
               Projects Delivered
             </div>
           </div>
-          <div className="text-center p-8 border border-border/30 rounded-2xl bg-card/30 backdrop-blur-sm">
-            <div className="font-playfair text-6xl md:text-7xl lg:text-8xl font-bold text-gold mb-2">
+          <div className="stat-card scroll-animate text-center py-6 px-4 border border-border/30 rounded-xl bg-card/30 backdrop-blur-sm flex flex-col items-center justify-center min-h-[140px]" style={{ transitionDelay: "0.1s" }}>
+            <div className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold text-gold leading-none">
               100%
             </div>
-            <div className="text-foreground/60 font-inter text-lg tracking-wider uppercase">
-              Clients
+            <div className="text-foreground/60 font-inter text-sm md:text-base tracking-wider uppercase mt-3">
+              Client Satisfaction
             </div>
           </div>
-          <div className="text-center p-8 border border-border/30 rounded-2xl bg-card/30 backdrop-blur-sm">
-            <div className="font-playfair text-6xl md:text-7xl lg:text-8xl font-bold text-gold mb-2">
+          <div className="stat-card scroll-animate text-center py-6 px-4 border border-border/30 rounded-xl bg-card/30 backdrop-blur-sm flex flex-col items-center justify-center min-h-[140px]" style={{ transitionDelay: "0.2s" }}>
+            <div className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold text-gold leading-none">
               3+
             </div>
-            <div className="text-foreground/60 font-inter text-lg tracking-wider uppercase">
+            <div className="text-foreground/60 font-inter text-sm md:text-base tracking-wider uppercase mt-3">
               Years Experience
             </div>
           </div>

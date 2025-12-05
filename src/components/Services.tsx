@@ -1,5 +1,6 @@
 import { Sparkles, TrendingUp, Share2, Globe, Feather, Palette } from "lucide-react";
 import { Card, CardContent, CardHeader } from "./ui/card";
+import { useEffect, useRef } from "react";
 
 const services = [
   {
@@ -41,10 +42,35 @@ const services = [
 ];
 
 const Services = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (headerRef.current) observer.observe(headerRef.current);
+    const cards = sectionRef.current?.querySelectorAll(".service-card");
+    cards?.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="services" className="py-24 lg:py-32 px-6 lg:px-12 bg-secondary/30">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
+    <section ref={sectionRef} id="services" className="py-16 lg:py-24 px-6 lg:px-12 bg-secondary/30 relative">
+      {/* Subtle parallax background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gold/5 to-transparent parallax-slow" />
+      
+      <div className="container mx-auto relative z-10">
+        <div ref={headerRef} className="text-center mb-12 scroll-animate">
           <span className="text-gold font-inter text-sm tracking-[0.2em] uppercase">
             Our Services
           </span>
@@ -54,12 +80,12 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <Card
               key={service.title}
-              className="bg-card border-border/50 hover:border-gold/50 transition-all duration-500 group hover:shadow-premium animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="service-card scroll-animate bg-card border-border/50 hover:border-gold/50 transition-all duration-500 group hover:shadow-premium"
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
               <CardHeader>
                 <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-smooth group-hover:scale-110">
